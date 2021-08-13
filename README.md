@@ -1,15 +1,15 @@
 # CRWN Clothing
 
-### View app live
+### View live
 https://crwn-live-jdiers.herokuapp.com/
 
-### Run app locally
+### Run locally
 ```
 yarn i
 yarn start
 ```
 
-### Deploy app to prod
+### Deploy to prod
 ```
 git push heroku master
 ```
