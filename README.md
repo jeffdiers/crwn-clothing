@@ -5,7 +5,7 @@ https://crwn-live-jdiers.herokuapp.com/
 
 ### Run locally
 ```
-yarn i
+yarn install
 yarn start
 ```
 
