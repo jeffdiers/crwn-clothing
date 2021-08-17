@@ -1,7 +1,4 @@
 import React from "react";
-import { connect } from "react-redux";
-
-import { addItem } from "../../redux/cart/cart.actions";
 
 import {
   CollectionItemContainer,
@@ -12,7 +9,7 @@ import {
   PriceContainer,
 } from "./collection-item.styles";
 
-const CollectionItem = ({ item, _addItem }) => {
+const CollectionItem = ({ item, addItem }) => {
   const { name, price, imageUrl } = item;
   return (
     <CollectionItemContainer>
@@ -25,15 +22,11 @@ const CollectionItem = ({ item, _addItem }) => {
         <NameContainer>{name}</NameContainer>
         <PriceContainer>{price}</PriceContainer>
       </CollectionFooterContainer>
-      <AddButton onClick={() => _addItem(item)} inverted>
+      <AddButton onClick={() => addItem(item)} inverted>
         ADD TO CART
       </AddButton>
     </CollectionItemContainer>
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  _addItem: (item) => dispatch(addItem(item)),
-});
-
-export default connect(null, mapDispatchToProps)(CollectionItem);
+export default CollectionItem;
