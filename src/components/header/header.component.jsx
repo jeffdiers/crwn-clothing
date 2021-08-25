@@ -3,8 +3,6 @@ import React from "react";
 import CartIconContainer from "../cart-icon/cart-icon.container";
 import CartDropdownContainer from "../cart-dropdown/cart-dropdown.container";
 
-import { auth } from "../../firebase/firebase.utils";
-
 import { ReactComponent as Logo } from "../../assets/crown.svg";
 
 import {
@@ -14,7 +12,7 @@ import {
   OptionLink,
 } from "./header.styles.jsx";
 
-const Header = ({ currentUser, hidden }) => (
+const Header = ({ currentUser, hidden, signOutStart }) => (
   <HeaderContainer>
     <LogoContainer to="/">
       <Logo />
@@ -23,7 +21,7 @@ const Header = ({ currentUser, hidden }) => (
       <OptionLink to="/shop">SHOP</OptionLink>
       <OptionLink to="/shop">CONTACT</OptionLink>
       {currentUser ? (
-        <OptionLink to="/#" onClick={() => auth.signOut()}>
+        <OptionLink to="/#" onClick={signOutStart}>
           SIGN OUT
         </OptionLink>
       ) : (
