@@ -1,4 +1,6 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { addItem } from "../../redux/cart/cart.actions";
 
 import {
   CollectionItemContainer,
@@ -9,8 +11,9 @@ import {
   PriceContainer,
 } from "./collection-item.styles";
 
-const CollectionItem = ({ item, addItem }) => {
+const CollectionItem = ({ item }) => {
   const { name, price, imageUrl } = item;
+  const dispatch = useDispatch();
   return (
     <CollectionItemContainer>
       <BackgroundImage
@@ -22,7 +25,7 @@ const CollectionItem = ({ item, addItem }) => {
         <NameContainer>{name}</NameContainer>
         <PriceContainer>{price}</PriceContainer>
       </CollectionFooterContainer>
-      <AddButton onClick={() => addItem(item)} inverted>
+      <AddButton onClick={() => dispatch(addItem(item))} inverted>
         ADD TO CART
       </AddButton>
     </CollectionItemContainer>
