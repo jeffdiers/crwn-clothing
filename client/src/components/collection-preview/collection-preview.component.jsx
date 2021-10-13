@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useRouteMatch } from "react-router-dom";
 
 import CollectionItem from "../collection-item/collection-item.component";
 
@@ -9,8 +9,9 @@ import {
   PreviewContainer,
 } from "./collection-preview.styles";
 
-const CollectionPreview = ({ title, items, match, routeName }) => {
+const CollectionPreview = ({ title, items, routeName }) => {
   const history = useHistory();
+  const match = useRouteMatch();
   return (
     <CollectionPreviewContainer>
       <TitleContainer

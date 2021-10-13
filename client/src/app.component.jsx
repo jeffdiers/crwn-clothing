@@ -13,8 +13,15 @@ import SignInAndSignUp from "./pages/sign-in-and-sign-up/sign-in-and-sign-up.com
 import CheckoutPage from "./pages/checkout/checkout.component";
 
 import "./app.styles.css";
+import axios from "axios";
 
 const App = () => {
+  axios.get("/hello");
+  axios({
+    url: "/hello",
+    method: "get",
+  });
+
   const currentUser = useSelector(selectCurrentUser);
   const dispatch = useDispatch();
 

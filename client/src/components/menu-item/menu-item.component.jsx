@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useRouteMatch } from "react-router-dom";
 
 import {
   MenuItemContainer,
@@ -9,8 +9,9 @@ import {
   ContentSubtitle,
 } from "./menu-item.styles";
 
-const MenuItem = ({ title, imageUrl, size, linkUrl, match }) => {
+const MenuItem = ({ title, imageUrl, size, linkUrl }) => {
   const history = useHistory();
+  const match = useRouteMatch();
   return (
     <MenuItemContainer
       size={size}
