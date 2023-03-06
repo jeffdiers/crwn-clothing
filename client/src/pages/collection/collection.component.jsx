@@ -1,7 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import CollectionItem from "../../components/collection-item/collection-item.component";
+
+import { selectCollectionsMap } from "../../redux/shop/shop.selectors";
 
 import {
   CollectionPageContainer,
@@ -9,13 +12,10 @@ import {
   ItemsContainer,
 } from "./collection.styles";
 
-const CollectionPage = ({ collectionsMap }) => {
+const CollectionPage = () => {
   const { collectionId } = useParams();
-  const [products, setProducts] = useState(collectionsMap[collectionId]);
-
-  useEffect(() => {
-    setProducts(collectionsMap[collectionId]);
-  }, [collectionId, collectionsMap]);
+  const collectionsMap = useSelector(selectCollectionsMap);
+  const products = collectionsMap[collectionId];
 
   return (
     <CollectionPageContainer>

@@ -47,22 +47,10 @@ export const addCollectionsAndDocuments = async (
   return await batch.commit();
 };
 
-export const convertCollectionsSnapshotToMap = (collections) => {
-  const transformedCollection = collections.docs.map((doc) => {
-    const { title, items } = doc.data();
-
-    return {
-      routeName: encodeURI(title.toLowerCase()),
-      id: doc.id,
-      title,
-      items,
-    };
-  });
-
-  return transformedCollection.reduce((accumulator, collection) => {
-    accumulator[collection.title.toLowerCase()] = collection;
-    return accumulator;
-  }, {});
+export const getCollectionsData = async () => {
+  const collectionRef = firestore.collection("collections");
+  const snapshot = await collectionRef.get();
+  return snapshot.docs.map((docSnapshot) => docSnapshot.data());
 };
 
 export const getCurrentUser = () => {
