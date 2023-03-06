@@ -1,8 +1,5 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-
-import { selectCollection } from "../../redux/shop/shop.selectors";
 
 import CollectionItem from "../../components/collection-item/collection-item.component";
 
@@ -12,14 +9,19 @@ import {
   ItemsContainer,
 } from "./collection.styles";
 
-const CollectionPage = () => {
+const CollectionPage = ({ collectionsMap }) => {
   const { collectionId } = useParams();
-  const { title, items } = useSelector(selectCollection(collectionId));
+  const [products, setProducts] = useState(collectionsMap[collectionId]);
+
+  useEffect(() => {
+    setProducts(collectionsMap[collectionId]);
+  }, [collectionId, collectionsMap]);
+
   return (
     <CollectionPageContainer>
-      <TitleContainer>{title}</TitleContainer>
+      <TitleContainer>{collectionId.toUpperCase()}</TitleContainer>
       <ItemsContainer>
-        {items.map((item) => (
+        {products.map((item) => (
           <CollectionItem key={item.id} item={item} />
         ))}
       </ItemsContainer>

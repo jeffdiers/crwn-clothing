@@ -10,7 +10,7 @@ import {
   fetchCollectionsFailure,
 } from "./shop.actions";
 
-import ShopActionTypes from "./shop.types";
+import { SHOP_ACTION_TYPES } from "./shop.types";
 
 export function* fetchCollectionsAsync() {
   try {
@@ -28,7 +28,7 @@ export function* fetchCollectionsAsync() {
 
 export function* fetchCollectionsStart() {
   yield takeLatest(
-    ShopActionTypes.FETCH_COLLECTIONS_START,
+    SHOP_ACTION_TYPES.FETCH_COLLECTIONS_START,
     fetchCollectionsAsync
   );
 }
