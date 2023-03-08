@@ -1,9 +1,11 @@
 import { createSelector } from "reselect";
 
+import { RootState } from "../store";
+
 import { ShopState } from "./shop.reducer";
 import { Collection, CollectionsMap } from "./shop.types";
 
-const selectShop = (state: any): ShopState => state.shop;
+const selectShop = (state: RootState): ShopState => state.shop;
 
 export const selectCollections = createSelector(
   [selectShop],
