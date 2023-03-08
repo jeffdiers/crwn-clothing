@@ -1,4 +1,4 @@
-import { takeLatest, call, put, all } from "@redux-saga/core/effects";
+import { takeLatest, call, put, all } from "typed-redux-saga/macro";
 
 import { getCategoriesAndDocuments } from "../../utils/firebase/firebase.utils";
 
@@ -11,23 +11,20 @@ import { SHOP_ACTION_TYPES } from "./shop.types";
 
 export function* fetchCollectionsAsync() {
   try {
-    const collectionsArray = yield call(
-      getCategoriesAndDocuments,
-      "collections"
-    );
-    yield put(fetchCollectionsSuccess(collectionsArray));
+    const collectionsArray = yield* call(getCategoriesAndDocuments);
+    yield* put(fetchCollectionsSuccess(collectionsArray));
   } catch (error) {
-    yield put(fetchCollectionsFailure(error.message));
+    yield* put(fetchCollectionsFailure((error as Error).message));
   }
 }
 
 export function* fetchCollectionsStart() {
-  yield takeLatest(
+  yield* takeLatest(
     SHOP_ACTION_TYPES.FETCH_COLLECTIONS_START,
     fetchCollectionsAsync
   );
 }
 
 export function* shopSagas() {
-  yield all([call(fetchCollectionsStart)]);
+  yield* all([call(fetchCollectionsStart)]);
 }
