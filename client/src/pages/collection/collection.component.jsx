@@ -15,7 +15,7 @@ import {
 const CollectionPage = () => {
   const { collectionId } = useParams();
   const collectionsMap = useSelector(selectCollectionsMap);
-  const products = collectionsMap[collectionId];
+  const products = collectionsMap[collectionId] || [];
 
   return (
     <CollectionPageContainer>

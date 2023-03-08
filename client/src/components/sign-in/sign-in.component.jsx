@@ -29,7 +29,7 @@ const SignIn = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    dispatch(emailSignInStart(userCredentials));
+    dispatch(emailSignInStart(email, password));
   };
 
   const handleChange = (event) => {

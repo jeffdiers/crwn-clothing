@@ -1,6 +1,6 @@
 import { takeLatest, call, put, all } from "@redux-saga/core/effects";
 
-import { getCollectionsData } from "../../firebase/firebase.utils";
+import { getCategoriesAndDocuments } from "../../utils/firebase/firebase.utils";
 
 import {
   fetchCollectionsSuccess,
@@ -11,7 +11,10 @@ import { SHOP_ACTION_TYPES } from "./shop.types";
 
 export function* fetchCollectionsAsync() {
   try {
-    const collectionsArray = yield call(getCollectionsData, "collections");
+    const collectionsArray = yield call(
+      getCategoriesAndDocuments,
+      "collections"
+    );
     yield put(fetchCollectionsSuccess(collectionsArray));
   } catch (error) {
     yield put(fetchCollectionsFailure(error.message));

@@ -29,7 +29,7 @@ const SignUp = () => {
       return;
     }
 
-    dispatch(signUpStart({ email, password, displayName }));
+    dispatch(signUpStart(email, password, displayName));
   };
 
   const handleChange = (event) => {

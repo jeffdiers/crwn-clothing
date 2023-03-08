@@ -8,9 +8,9 @@ import {
 } from "./shop.actions";
 
 export type ShopType = {
-  collections: Collections[];
-  isFetching: boolean;
-  errorMessage: string;
+  readonly collections: Collections[];
+  readonly isFetching: boolean;
+  readonly errorMessage: string;
 };
 
 const INITIAL_STATE: ShopType = {
