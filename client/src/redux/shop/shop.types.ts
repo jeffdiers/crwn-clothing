@@ -6,15 +6,13 @@ export enum SHOP_ACTION_TYPES {
 
 export type CollectionItem = {
   id: number;
-  name: string;
   imageUrl: string;
+  name: string;
   price: number;
 };
 
-export type Collections = {
-  id: string;
+export type Collection = {
   items: CollectionItem[];
-  routeName: string;
   title: string;
 };
 

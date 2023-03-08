@@ -1,4 +1,4 @@
-import { SHOP_ACTION_TYPES, CollectionsMap } from "./shop.types";
+import { SHOP_ACTION_TYPES, Collection } from "./shop.types";
 
 import {
   createAction,
@@ -12,7 +12,7 @@ export type FetchCollectionsStart =
 
 export type FetchCollectionsSuccess = ActionWithPayload<
   SHOP_ACTION_TYPES.FETCH_COLLECTIONS_SUCCESS,
-  CollectionsMap
+  Collection[]
 >;
 
 export type FetchCollectionsFailure = ActionWithPayload<
@@ -26,7 +26,7 @@ export const fetchCollectionsStart = withMatcher(
 );
 
 export const fetchCollectionsSuccess = withMatcher(
-  (collectionsMap: CollectionsMap): FetchCollectionsSuccess =>
+  (collectionsMap: Collection[]): FetchCollectionsSuccess =>
     createAction(SHOP_ACTION_TYPES.FETCH_COLLECTIONS_SUCCESS, collectionsMap)
 );
 

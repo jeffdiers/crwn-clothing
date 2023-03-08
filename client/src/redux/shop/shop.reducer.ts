@@ -1,25 +1,28 @@
 import { AnyAction } from "redux";
 
-import { Collections } from "./shop.types";
+import { Collection } from "./shop.types";
 import {
   fetchCollectionsStart,
   fetchCollectionsSuccess,
   fetchCollectionsFailure,
 } from "./shop.actions";
 
-export type ShopType = {
-  readonly collections: Collections[];
+export type ShopState = {
+  readonly collections: Collection[];
   readonly isFetching: boolean;
   readonly errorMessage: string;
 };
 
-const INITIAL_STATE: ShopType = {
+const SHOP_INITIAL_STATE: ShopState = {
   collections: [],
   isFetching: false,
   errorMessage: "",
 };
 
-const shopReducer = (state = INITIAL_STATE, action = {} as AnyAction) => {
+const shopReducer = (
+  state = SHOP_INITIAL_STATE,
+  action = {} as AnyAction
+): ShopState => {
   if (fetchCollectionsStart.match(action)) {
     return {
       ...state,

@@ -1,24 +1,19 @@
 import { createSelector } from "reselect";
 
-import { Collections, CollectionsMap } from "./shop.types";
+import { ShopState } from "./shop.reducer";
+import { Collection, CollectionsMap } from "./shop.types";
 
-const selectShop = (state: any) => state.shop;
+const selectShop = (state: any): ShopState => state.shop;
 
 export const selectCollections = createSelector(
   [selectShop],
   (shop) => shop.collections
 );
 
-export const selectCollectionsForPreview = createSelector(
-  [selectCollections],
-  (collections) =>
-    collections ? Object.keys(collections).map((key) => collections[key]) : []
-);
-
 export const selectCollectionsMap = createSelector(
   [selectCollections],
   (collections): CollectionsMap =>
-    collections.reduce((acc: CollectionsMap, collection: Collections) => {
+    collections.reduce((acc: CollectionsMap, collection: Collection) => {
       const { title, items } = collection;
       acc[title.toLowerCase()] = items;
       return acc;

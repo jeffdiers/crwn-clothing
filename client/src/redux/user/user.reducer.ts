@@ -9,17 +9,20 @@ import {
   signUpFailed,
 } from "./user.actions";
 
-export type UserType = {
+export type UserState = {
   readonly currentUser: UserData | null;
   readonly error: Error | null;
 };
 
-const INITIAL_STATE: UserType = {
+const USER_INITIAL_STATE: UserState = {
   currentUser: null,
   error: null,
 };
 
-const userReducer = (state = INITIAL_STATE, action = {} as AnyAction) => {
+const userReducer = (
+  state = USER_INITIAL_STATE,
+  action = {} as AnyAction
+): UserState => {
   if (signInSuccess.match(action)) {
     return { ...state, currentUser: action.payload };
   }
