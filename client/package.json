@@ -4,11 +4,18 @@
   "private": true,
   "proxy": "http://localhost:4200/",
   "dependencies": {
+    "@stripe/react-stripe-js": "^1.16.5",
+    "@stripe/stripe-js": "^1.48.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "@types/jest": "^29.4.0",
+    "@types/node": "^18.14.6",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "@types/styled-components": "^5.1.26",
     "axios": "^0.23.0",
-    "firebase": "^8.8.0",
+    "firebase": "9.17.2",
     "lodash.memoize": "^4.1.2",
     "node-sass": "^8.0.0",
     "react": "^17.0.2",
@@ -23,6 +30,8 @@
     "redux-saga": "^1.1.3",
     "reselect": "^4.0.0",
     "styled-components": "^5.3.0",
+    "typed-redux-saga": "^1.5.0",
+    "typescript": "^4.9.5",
     "web-vitals": "^0.2.4",
     "workbox-background-sync": "^5.1.3",
     "workbox-broadcast-update": "^5.1.3",
@@ -60,5 +69,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/react-router-dom": "^5.3.3",
+    "@types/redux-logger": "^3.0.9",
+    "babel-plugin-macros": "^3.1.0"
   }
 }
