@@ -1,17 +1,23 @@
-import React from "react";
+import { FC } from "react";
 import { useDispatch } from "react-redux";
 import { addItem } from "../../redux/cart/cart.actions";
+import { CollectionItem as CollectionItemType } from "../../redux/shop/shop.types";
+
+import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
 
 import {
   CollectionItemContainer,
-  AddButton,
   BackgroundImage,
   CollectionFooterContainer,
   NameContainer,
   PriceContainer,
 } from "./collection-item.styles";
 
-const CollectionItem = ({ item }) => {
+type CollectionItemProps = {
+  item: CollectionItemType;
+};
+
+const CollectionItem: FC<CollectionItemProps> = ({ item }) => {
   const { name, price, imageUrl } = item;
   const dispatch = useDispatch();
   return (
@@ -25,9 +31,12 @@ const CollectionItem = ({ item }) => {
         <NameContainer>{name}</NameContainer>
         <PriceContainer>{price}</PriceContainer>
       </CollectionFooterContainer>
-      <AddButton onClick={() => dispatch(addItem(item))} inverted>
+      <Button
+        buttonType={BUTTON_TYPE_CLASSES.inverted}
+        onClick={() => dispatch(addItem(item))}
+      >
         ADD TO CART
-      </AddButton>
+      </Button>
     </CollectionItemContainer>
   );
 };

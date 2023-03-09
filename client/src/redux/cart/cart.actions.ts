@@ -1,3 +1,4 @@
+import { CollectionItem } from "../shop/shop.types";
 import { CART_ACTION_TYPES, CartItem } from "./cart.types";
 
 import {
@@ -9,7 +10,10 @@ import {
 
 export type ToggleCartHidden = Action<CART_ACTION_TYPES.TOGGLE_CART_HIDDEN>;
 
-export type AddItem = ActionWithPayload<CART_ACTION_TYPES.ADD_ITEM, CartItem>;
+export type AddItem = ActionWithPayload<
+  CART_ACTION_TYPES.ADD_ITEM,
+  CollectionItem
+>;
 
 export type RemoveItem = ActionWithPayload<
   CART_ACTION_TYPES.REMOVE_ITEM,
@@ -28,7 +32,8 @@ export const toggleCartHidden = withMatcher(
 );
 
 export const addItem = withMatcher(
-  (item: CartItem): AddItem => createAction(CART_ACTION_TYPES.ADD_ITEM, item)
+  (item: CollectionItem): AddItem =>
+    createAction(CART_ACTION_TYPES.ADD_ITEM, item)
 );
 
 export const removeItem = withMatcher(

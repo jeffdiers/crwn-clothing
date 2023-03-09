@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import { useHistory, useRouteMatch } from "react-router-dom";
 
 import {
@@ -9,7 +9,14 @@ import {
   ContentSubtitle,
 } from "./menu-item.styles";
 
-const MenuItem = ({ title, imageUrl, size, linkUrl }) => {
+import { SectionCategory } from "../directory/directory.component";
+
+type MenuItemProps = {
+  category: SectionCategory;
+};
+
+const MenuItem: FC<MenuItemProps> = ({ category }) => {
+  const { title, imageUrl, size, linkUrl } = category;
   const history = useHistory();
   const match = useRouteMatch();
   return (

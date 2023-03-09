@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import { useState, FormEvent, ChangeEvent } from "react";
 
 import FormInput from "../form-input/form-input.component";
-import CustomButton from "../custom-button/custom-button.component";
+import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
 
 import {
   SignInContainer,
@@ -26,13 +26,13 @@ const SignIn = () => {
 
   const { email, password } = userCredentials;
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     dispatch(emailSignInStart(email, password));
   };
 
-  const handleChange = (event) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
 
     const { value, name } = event.target;
@@ -48,7 +48,7 @@ const SignIn = () => {
         <FormInput
           name="email"
           type="email"
-          handleChange={handleChange}
+          onChange={handleChange}
           value={email}
           label="Email"
           required
@@ -56,20 +56,20 @@ const SignIn = () => {
         <FormInput
           name="password"
           type="password"
-          handleChange={handleChange}
+          onChange={handleChange}
           value={password}
           label="Password"
           required
         />
         <ButtonsContainer>
-          <CustomButton type="submit">Sign In</CustomButton>
-          <CustomButton
+          <Button type="submit">Sign In</Button>
+          <Button
+            buttonType={BUTTON_TYPE_CLASSES.google}
             type="button"
             onClick={() => dispatch(googleSignInStart())}
-            isGoogleSignIn
           >
             Sign In With Google
-          </CustomButton>
+          </Button>
         </ButtonsContainer>
       </form>
     </SignInContainer>

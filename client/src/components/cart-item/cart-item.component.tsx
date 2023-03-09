@@ -1,4 +1,6 @@
-import React from "react";
+import { FC } from "react";
+
+import { CartItem as CartItemType } from "../../redux/cart/cart.types";
 
 import {
   CartitemContainer,
@@ -6,7 +8,13 @@ import {
   NameContainer,
 } from "./cart-item.styles";
 
-const CartItem = ({ cartItem: { imageUrl, price, name, quantity } }) => (
+type CartItemProps = {
+  cartItem: CartItemType;
+};
+
+const CartItem: FC<CartItemProps> = ({
+  cartItem: { imageUrl, price, name, quantity },
+}) => (
   <CartitemContainer>
     <img src={imageUrl} alt="item" />
     <ItemDetailContainer>

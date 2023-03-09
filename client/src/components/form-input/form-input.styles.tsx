@@ -9,9 +9,8 @@ const shrinkLabel = css`
   color: ${mainColor};
 `;
 
-const toggleShrinkLabel = (props) => {
-  if (props.value.length) return shrinkLabel;
-  return null;
+type FormInputLabelProps = {
+  shrink?: boolean;
 };
 
 export const GroupContainer = styled.div`
@@ -45,7 +44,7 @@ export const FormInputContainer = styled.input`
   }
 `;
 
-export const FormInputLabel = styled.label`
+export const FormInputLabel = styled.label<FormInputLabelProps>`
   color: ${subColor};
   font-size: 16px;
   font-weight: normal;
@@ -55,5 +54,5 @@ export const FormInputLabel = styled.label`
   top: 10px;
   transition: 300ms ease all;
 
-  ${toggleShrinkLabel}
+  ${({ shrink }) => shrink && shrinkLabel}
 `;

@@ -1,14 +1,16 @@
-import React, { useEffect } from "react";
+import { useEffect, FC } from "react";
 import { Route } from "react-router-dom";
 
 import { useDispatch } from "react-redux";
 
 import { fetchCollectionsStart } from "../../redux/shop/shop.actions";
 
-import CollectionPageContainer from "../collection/collection.container";
+import CollectionPage from "../collection/collection.component";
 import CollectionsOverviewContainer from "../../components/collections-overview/collections-overview.container";
 
-const ShopPage = ({ match }) => {
+import { RouteComponentProps } from "react-router-dom";
+
+const ShopPage: FC<RouteComponentProps> = ({ match }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -22,10 +24,7 @@ const ShopPage = ({ match }) => {
         path={`${match.path}`}
         component={CollectionsOverviewContainer}
       />
-      <Route
-        path={`${match.path}/:collectionId`}
-        component={CollectionPageContainer}
-      />
+      <Route path={`${match.path}/:collectionId`} component={CollectionPage} />
     </div>
   );
 };

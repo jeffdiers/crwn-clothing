@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import { useHistory, useRouteMatch } from "react-router-dom";
 
 import CollectionItem from "../collection-item/collection-item.component";
@@ -9,7 +9,19 @@ import {
   PreviewContainer,
 } from "./collection-preview.styles";
 
-const CollectionPreview = ({ title, items, routeName }) => {
+import { CollectionItem as CollectionItemType } from "../../redux/shop/shop.types";
+
+type CollectionPreviewProps = {
+  title: string;
+  items: CollectionItemType[];
+  routeName: string;
+};
+
+const CollectionPreview: FC<CollectionPreviewProps> = ({
+  title,
+  items,
+  routeName,
+}) => {
   const history = useHistory();
   const match = useRouteMatch();
   return (

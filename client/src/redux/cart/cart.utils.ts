@@ -1,8 +1,9 @@
+import { CollectionItem } from "../shop/shop.types";
 import { CartItem } from "./cart.types";
 
 export const addItemToCart = (
   cartItems: CartItem[],
-  cartItemToAdd: CartItem
+  cartItemToAdd: CollectionItem
 ): CartItem[] => {
   const existingCartItem = cartItems.find(
     (cartItem) => cartItem.id === cartItemToAdd.id

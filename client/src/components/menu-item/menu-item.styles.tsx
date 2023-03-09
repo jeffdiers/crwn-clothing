@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const MenuItemContainer = styled.div`
+type MenuItemContainerProps = {
+  size?: string;
+};
+
+export const MenuItemContainer = styled.div<MenuItemContainerProps>`
   height: ${({ size }) => (size === "large" ? "380px" : "240px")};
   min-width: 30%;
   flex: 1 1 auto;
@@ -33,7 +37,11 @@ export const MenuItemContainer = styled.div`
   }
 `;
 
-export const BackgroundImageContainer = styled.div`
+type BackgroundImageContainerProps = {
+  imageUrl: string;
+};
+
+export const BackgroundImageContainer = styled.div<BackgroundImageContainerProps>`
   width: 100%;
   height: 100%;
   background-size: cover;

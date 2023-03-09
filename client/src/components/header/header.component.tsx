@@ -1,5 +1,3 @@
-import React from "react";
-
 import CartIcon from "../cart-icon/cart-icon.component";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 
@@ -10,7 +8,7 @@ import {
   LogoContainer,
   OptionsContainer,
   OptionLink,
-} from "./header.styles.jsx";
+} from "./header.styles";
 
 import { useSelector, useDispatch } from "react-redux";
 import { selectCurrentUser } from "../../redux/user/user.selector";

@@ -1,5 +1,3 @@
-import React from "react";
-
 import CollectionPreview from "../collection-preview/collection-preview.component";
 
 import { selectCollectionsMap } from "../../redux/shop/shop.selectors";

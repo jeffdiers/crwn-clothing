@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import { useState, FormEvent, ChangeEvent } from "react";
+
+import { AuthError, AuthErrorCodes } from "firebase/auth";
 
 import { useDispatch } from "react-redux";
 
 import { signUpStart } from "../../redux/user/user.actions";
 
 import FormInput from "../form-input/form-input.component";
-import CustomButton from "../custom-button/custom-button.component";
+import Button from "../button/button.component";
 
 import { SignUpContainer, SignUpTitle } from "./sign-up.styles";
 
@@ -21,7 +23,7 @@ const SignUp = () => {
 
   const { displayName, email, password, confirmPassword } = userCredentials;
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     if (password !== confirmPassword) {
@@ -29,10 +31,18 @@ const SignUp = () => {
       return;
     }
 
-    dispatch(signUpStart(email, password, displayName));
+    try {
+      dispatch(signUpStart(email, password, displayName));
+    } catch (error) {
+      if ((error as AuthError).code === AuthErrorCodes.EMAIL_EXISTS) {
+        alert("Cannot create user, email already in use");
+      } else {
+        console.log("user creation error", error);
+      }
+    }
   };
 
-  const handleChange = (event) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
     const { name, value } = event.target;
 
@@ -76,7 +86,7 @@ const SignUp = () => {
           label="Confirm Password"
           required
         />
-        <CustomButton type="submit">SIGN UP</CustomButton>
+        <Button type="submit">SIGN UP</Button>
       </form>
     </SignUpContainer>
   );

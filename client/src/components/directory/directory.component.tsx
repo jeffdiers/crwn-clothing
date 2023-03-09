@@ -1,49 +1,57 @@
-import React from "react";
+import { Key } from "react";
 
 import MenuItem from "../menu-item/menu-item.component";
 
 import { DirectoryMenuContainer } from "./directory.styles";
 
-const sections = [
+export type SectionCategory = {
+  id: Key;
+  title: string;
+  imageUrl: string;
+  linkUrl: string;
+  size?: string;
+};
+
+const sections: SectionCategory[] = [
   {
+    id: 1,
     title: "hats",
     imageUrl: "https://i.ibb.co/cvpntL1/hats.png",
-    id: 1,
     linkUrl: "shop/hats",
   },
   {
+    id: 2,
     title: "jackets",
     imageUrl: "https://i.ibb.co/px2tCc3/jackets.png",
-    id: 2,
     linkUrl: "shop/jackets",
   },
   {
+    id: 3,
     title: "sneakers",
     imageUrl: "https://i.ibb.co/0jqHpnp/sneakers.png",
-    id: 3,
     linkUrl: "shop/sneakers",
   },
   {
+    id: 4,
     title: "womens",
     imageUrl: "https://i.ibb.co/GCCdy8t/womens.png",
-    size: "large",
-    id: 4,
     linkUrl: "shop/womens",
+    size: "large",
   },
   {
+    id: 5,
     title: "mens",
     imageUrl: "https://i.ibb.co/R70vBrQ/men.png",
-    size: "large",
-    id: 5,
     linkUrl: "shop/mens",
+    size: "large",
   },
 ];
 
 const Directory = () => {
   return (
     <DirectoryMenuContainer>
-      {sections.map(({ id, ...props }) => (
-        <MenuItem key={id} {...props} />
+      {sections.map((category) => (
+        <MenuItem key={category.id} category={category} />
       ))}
     </DirectoryMenuContainer>
   );

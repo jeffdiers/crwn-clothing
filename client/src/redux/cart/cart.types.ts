@@ -8,6 +8,6 @@ export enum CART_ACTION_TYPES {
   CLEAR_CART = "cart/CLEAR_CART",
 }
 
-export type CartItem = {
+export type CartItem = CollectionItem & {
   quantity: number;
-} & CollectionItem;
+};
