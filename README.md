@@ -1,17 +1,14 @@
 # CRWN Clothing
 
 ### View live
-https://crwn-live-jdiers.herokuapp.com/
+
+https://master--magical-sunflower-2f0d00.netlify.app/
 
 ### Run locally
+
 ```
 yarn install
 yarn start
-```
-
-### Deploy to prod
-```
-git push heroku master
 ```
 
 This is a project created following the Complete React Developer in 2021
